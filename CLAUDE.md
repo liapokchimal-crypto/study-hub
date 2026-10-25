@@ -39,6 +39,12 @@ Subjects so far: `spanish`, `math`, `chemistry`. A new subject needs: a folder w
    answer key must be correct.
 8. Must work on a phone: no wide fixed-width content; wrap wide tables in `<div class="table-scroll">`.
 
+## Asset versions (cache busting)
+
+Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=2`). Browsers keep cached copies
+for ~10 minutes, so whenever `style.css` or `study.js` changes, bump `N` in **every** `.html` file (including
+`templates/lesson-template.html`) in the same commit. New lessons copy the current number from the template.
+
 ## Previewing
 
 Run `powershell -NoProfile -ExecutionPolicy Bypass -File .claude/serve.ps1` in the background, then open
