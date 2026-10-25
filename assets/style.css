@@ -120,6 +120,7 @@ th { background: var(--surface); }
 .table-scroll { overflow-x: auto; }
 
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+@media (max-width: 480px) { .katex-display { font-size: 0.9em; } }
 
 details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin: 12px 0; }
 summary { cursor: pointer; font-weight: 600; }

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solving Quadratic Equations · Math · Study Hub</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/mhchem.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body)"></script>
+  <script defer src="../assets/study.js"></script>
+</head>
+<body class="math">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">📚 Study Hub</a>
+      <span class="crumbs">/ <a href="./">Math</a></span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Solving Quadratic Equations</h1>
+    <p class="lead">After this lesson you can solve any quadratic equation, pick the fastest method, and predict the kind of solutions before you start.</p>
+
+    <h2>The idea</h2>
+    <p>A <strong>quadratic equation</strong> is any equation that can be written in <strong>standard form</strong>:</p>
+    $$ ax^2 + bx + c = 0, \qquad a \neq 0 $$
+    <p>
+      The solutions (also called <strong>roots</strong>) are the values of \( x \) that make the equation true.
+      Graphically, they are where the parabola \( y = ax^2 + bx + c \) crosses the \( x \)-axis.
+      A quadratic has at most two real roots.
+    </p>
+
+    <div class="box tip">
+      <p><strong>Always start here:</strong> move everything to one side so the equation equals 0,
+      then read off \( a \), \( b \) and \( c \). For \( 3x^2 = 5 - 2x \), rewrite as
+      \( 3x^2 + 2x - 5 = 0 \), so \( a = 3,\ b = 2,\ c = -5 \).</p>
+    </div>
+
+    <h2>Method 1 — Factoring</h2>
+    <p>
+      If a product equals zero, at least one factor must be zero (the <strong>zero-product rule</strong>).
+      So if you can write the quadratic as two brackets, you are almost done.
+    </p>
+    <p><strong>Example:</strong> solve \( x^2 - 5x + 6 = 0 \).</p>
+    <p>Find two numbers that <em>multiply</em> to \( c = 6 \) and <em>add</em> to \( b = -5 \): that's \( -2 \) and \( -3 \).</p>
+    $$ (x - 2)(x - 3) = 0 \;\Rightarrow\; x = 2 \text{ or } x = 3 $$
+    <p>Check \( x = 2 \): \( 4 - 10 + 6 = 0 \) ✅</p>
+
+    <div class="box warn">
+      <p><strong>Common mistake:</strong> never divide both sides by \( x \). In \( x^2 = 5x \),
+      dividing gives only \( x = 5 \) and loses \( x = 0 \). Instead factor:
+      \( x^2 - 5x = x(x - 5) = 0 \), so \( x = 0 \) or \( x = 5 \).</p>
+    </div>
+
+    <h2>Method 2 — Square roots (when \( b = 0 \))</h2>
+    <p>If there is no \( x \) term, isolate \( x^2 \) and take the square root — remember both signs.</p>
+    <p><strong>Example:</strong> solve \( 2x^2 - 18 = 0 \).</p>
+    $$ 2x^2 = 18 \;\Rightarrow\; x^2 = 9 \;\Rightarrow\; x = \pm 3 $$
+
+    <h2>Method 3 — Completing the square</h2>
+    <p>
+      Rewrite the left side as a perfect square \( (x + k)^2 \). The trick: with \( a = 1 \),
+      add \( \left(\tfrac{b}{2}\right)^2 \) to both sides.
+    </p>
+    <p><strong>Example:</strong> solve \( x^2 + 6x - 7 = 0 \). Here \( \left(\tfrac{6}{2}\right)^2 = 9 \), so add 9 to both sides.</p>
+    $$
+    \begin{aligned}
+      x^2 + 6x &= 7 \\
+      x^2 + 6x + 9 &= 7 + 9 \\
+      (x + 3)^2 &= 16 \\
+      x + 3 &= \pm 4 \\
+      x &= 1 \text{ or } x = -7
+    \end{aligned}
+    $$
+    <p>This method is also how the quadratic formula is derived (see below).</p>
+
+    <h2>Method 4 — The quadratic formula (always works)</h2>
+    $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
+    <p><strong>Example:</strong> solve \( 2x^2 + 3x - 2 = 0 \). Here \( a = 2,\ b = 3,\ c = -2 \).</p>
+    $$
+    \begin{aligned}
+      x &= \frac{-3 \pm \sqrt{3^2 - 4(2)(-2)}}{2(2)} \\[4pt]
+        &= \frac{-3 \pm \sqrt{25}}{4} = \frac{-3 \pm 5}{4} \\[4pt]
+      x &= \frac{1}{2} \quad \text{or} \quad x = -2
+    \end{aligned}
+    $$
+    <p>Check \( x = \tfrac12 \): \( 2\cdot\tfrac14 + \tfrac32 - 2 = \tfrac12 + \tfrac32 - 2 = 0 \) ✅</p>
+
+    <details>
+      <summary>Where does the formula come from? (derivation)</summary>
+      <p>Complete the square on the general equation:</p>
+      $$
+      \begin{aligned}
+        ax^2 + bx + c &= 0 \\
+        x^2 + \frac{b}{a}x &= -\frac{c}{a} \\
+        x^2 + \frac{b}{a}x + \frac{b^2}{4a^2} &= \frac{b^2}{4a^2} - \frac{c}{a} \\
+        \left(x + \frac{b}{2a}\right)^2 &= \frac{b^2 - 4ac}{4a^2} \\
+        x + \frac{b}{2a} &= \pm\frac{\sqrt{b^2 - 4ac}}{2a} \\
+        x &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+      \end{aligned}
+      $$
+    </details>
+
+    <h2>The discriminant: know the answer type first</h2>
+    <p>The expression under the square root, \( \Delta = b^2 - 4ac \), is called the <strong>discriminant</strong>.</p>
+    <div class="table-scroll">
+      <table>
+        <tr><th>Discriminant</th><th>Solutions</th><th>Example</th></tr>
+        <tr><td>\( \Delta &gt; 0 \)</td><td>Two different real roots</td><td>\( x^2 - 5x + 6 = 0 \): \( \Delta = 1 \), roots 2 and 3</td></tr>
+        <tr><td>\( \Delta = 0 \)</td><td>One repeated real root</td><td>\( x^2 - 6x + 9 = 0 \): \( \Delta = 0 \), root 3</td></tr>
+        <tr><td>\( \Delta &lt; 0 \)</td><td>No real roots (two complex roots)</td><td>\( x^2 + 2x + 5 = 0 \): \( \Delta = -16 \)</td></tr>
+      </table>
+    </div>
+    <p>For the last example, the formula still works using \( \sqrt{-16} = 4i \):</p>
+    $$ x = \frac{-2 \pm 4i}{2} = -1 \pm 2i $$
+
+    <div class="box tip">
+      <p><strong>Quick check (Vieta's formulas):</strong> the two roots always satisfy
+      \( x_1 + x_2 = -\tfrac{b}{a} \) and \( x_1 \cdot x_2 = \tfrac{c}{a} \).
+      For \( 2x^2 + 3x - 2 = 0 \): \( \tfrac12 + (-2) = -\tfrac32 \) ✅ and \( \tfrac12 \cdot (-2) = -1 \) ✅</p>
+    </div>
+
+    <h2>Which method should I use?</h2>
+    <div class="table-scroll">
+      <table>
+        <tr><th>The equation looks like…</th><th>Use</th></tr>
+        <tr><td>No \( x \) term (\( b = 0 \))</td><td>Square roots</td></tr>
+        <tr><td>No constant (\( c = 0 \))</td><td>Factor out \( x \)</td></tr>
+        <tr><td>Small whole numbers that factor nicely</td><td>Factoring</td></tr>
+        <tr><td>Anything else, or you're unsure</td><td>Quadratic formula</td></tr>
+      </table>
+    </div>
+
+    <h2>Practice</h2>
+    <p>Try each one on paper first, then open the solution.</p>
+    <details>
+      <summary>1. \( x^2 + x - 12 = 0 \)</summary>
+      <p>Numbers that multiply to \( -12 \) and add to \( 1 \): \( 4 \) and \( -3 \).
+      $$ (x + 4)(x - 3) = 0 $$
+      So \( x = -4 \) or \( x = 3 \).</p>
+    </details>
+    <details>
+      <summary>2. \( 3x^2 - 12x = 0 \)</summary>
+      <p>No constant, so factor out \( 3x \):
+      $$ 3x(x - 4) = 0 \;\Rightarrow\; x = 0 \text{ or } x = 4 $$</p>
+    </details>
+    <details>
+      <summary>3. \( x^2 - 4x - 1 = 0 \)</summary>
+      <p>Doesn't factor nicely, so use the formula with \( a = 1,\ b = -4,\ c = -1 \):
+      $$
+      \begin{aligned}
+        x &= \frac{4 \pm \sqrt{16 + 4}}{2} = \frac{4 \pm 2\sqrt{5}}{2} \\[4pt]
+          &= 2 \pm \sqrt{5}
+      \end{aligned}
+      $$</p>
+    </details>
+    <details>
+      <summary>4. \( 4x^2 + 4x + 1 = 0 \)</summary>
+      <p>\( \Delta = 16 - 16 = 0 \), so one repeated root. It's a perfect square:
+      $$ (2x + 1)^2 = 0 \;\Rightarrow\; x = -\tfrac{1}{2} $$</p>
+    </details>
+    <details>
+      <summary>5. \( x^2 + 4x + 13 = 0 \)</summary>
+      <p>\( \Delta = 16 - 52 = -36 &lt; 0 \), so no real roots. Complex roots:
+      $$
+      \begin{aligned}
+        x &= \frac{-4 \pm \sqrt{-36}}{2} = \frac{-4 \pm 6i}{2} \\[4pt]
+          &= -2 \pm 3i
+      \end{aligned}
+      $$</p>
+    </details>
+
+    <h2>Quiz</h2>
+    <div class="quiz">
+      <div class="quiz-q" data-answer="b" data-explain="Discriminant = 16 − 16 = 0, so there is exactly one (repeated) root: x = 2.">
+        <p>1. How many real solutions does \( x^2 - 4x + 4 = 0 \) have?</p>
+        <button data-opt="a">Two different real solutions</button>
+        <button data-opt="b">One repeated real solution</button>
+        <button data-opt="c">No real solutions</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="x² = 9 has two square roots: 3 and −3.">
+        <p>2. Solve \( x^2 - 9 = 0 \).</p>
+        <button data-opt="a">\( x = 3 \) only</button>
+        <button data-opt="b">\( x = 9 \) or \( x = -9 \)</button>
+        <button data-opt="c">\( x = 3 \) or \( x = -3 \)</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Set each bracket to zero: x − 5 = 0 gives 5, x + 2 = 0 gives −2.">
+        <p>3. What are the solutions of \( (x - 5)(x + 2) = 0 \)?</p>
+        <button data-opt="a">\( 5 \) and \( -2 \)</button>
+        <button data-opt="b">\( -5 \) and \( 2 \)</button>
+        <button data-opt="c">\( 5 \) and \( 2 \)</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="b² − 4ac = 3² − 4(2)(−5) = 9 + 40 = 49. Watch the sign of c!">
+        <p>4. What is the discriminant of \( 2x^2 + 3x - 5 = 0 \)?</p>
+        <button data-opt="a">\( -31 \)</button>
+        <button data-opt="b">\( 49 \)</button>
+        <button data-opt="c">\( 31 \)</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Half of 8 is 4, and 4² = 16, giving (x + 4)².">
+        <p>5. To complete the square for \( x^2 + 8x \), what number do you add?</p>
+        <button data-opt="a">\( 4 \)</button>
+        <button data-opt="b">\( 8 \)</button>
+        <button data-opt="c">\( 16 \)</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Write it as x² − 5x = 0, so x(x − 5) = 0. Dividing by x would lose the solution x = 0.">
+        <p>6. Solve \( x^2 = 5x \).</p>
+        <button data-opt="a">\( x = 0 \) or \( x = 5 \)</button>
+        <button data-opt="b">\( x = 5 \) only</button>
+        <button data-opt="c">\( x = \pm\sqrt{5} \)</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="By Vieta's formulas the sum is −b/a = −(−12)/3 = 4.">
+        <p>7. Without solving, what is the sum of the roots of \( 3x^2 - 12x + 7 = 0 \)?</p>
+        <button data-opt="a">\( -4 \)</button>
+        <button data-opt="b">\( 4 \)</button>
+        <button data-opt="c">\( \tfrac{7}{3} \)</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Discriminant = 4 − 40 = −36, √(−36) = 6i, so x = (−2 ± 6i)/2 = −1 ± 3i.">
+        <p>8. Solve \( x^2 + 2x + 10 = 0 \).</p>
+        <button data-opt="a">\( x = -1 \pm 3 \)</button>
+        <button data-opt="b">No solutions at all</button>
+        <button data-opt="c">\( x = -1 \pm 3i \)</button>
+      </div>
+    </div>
+
+    <nav class="lesson-nav">
+      <a href="./">← All Math lessons</a>
+    </nav>
+  </main>
+
+  <footer>Made with care at home.</footer>
+</body>
+</html>

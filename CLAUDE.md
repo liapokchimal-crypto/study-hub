@@ -37,6 +37,12 @@ Subjects so far: `spanish`, `math`, `chemistry`. A new subject needs: a folder w
    answer key must be correct.
 8. Must work on a phone: no wide fixed-width content; wrap wide tables in `<div class="table-scroll">`.
 
+## Previewing
+
+Run `powershell -NoProfile -ExecutionPolicy Bypass -File .claude/serve.ps1` in the background, then open
+http://localhost:8080/ in the browser pane. Check for `.katex-error` elements, and check a 375px-wide (phone)
+view: no display formula should need sideways scrolling, so split long chains of `=` over `aligned` lines.
+
 ## Privacy
 
 The site is public. Never include the student's name, school, location, or other personal details.
