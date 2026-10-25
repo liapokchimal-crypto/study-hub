@@ -1,0 +1,65 @@
+<!doctype html>
+<!-- Copy this file to <subject>/<lesson-slug>.html and replace every [BRACKETED] part. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Lesson Title] · [Subject] · Study Hub</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <!-- Math & chemistry formulas (KaTeX + mhchem). Delete these 4 lines if the lesson has no formulas. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/mhchem.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body)"></script>
+  <script defer src="../assets/study.js"></script>
+</head>
+<body class="[subject]">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">📚 Study Hub</a>
+      <span class="crumbs">/ <a href="./">[Subject]</a></span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>[Lesson Title]</h1>
+    <p class="lead">[One sentence: what you will be able to do after this lesson.]</p>
+
+    <h2>The idea</h2>
+    <p>[Explanation. Inline math: \( a^2 + b^2 = c^2 \). Chemistry: \( \ce{H2O} \).]</p>
+    $$ [display formula] $$
+
+    <div class="box tip"><p><strong>Tip:</strong> [Helpful hint.]</p></div>
+
+    <h2>Worked example</h2>
+    <p>[Step-by-step example.]</p>
+
+    <h2>Practice</h2>
+    <details>
+      <summary>[Problem]</summary>
+      <p>[Solution]</p>
+    </details>
+
+    <h2>Flashcards</h2>
+    <div class="flashcards">
+      <button class="flashcard"><span class="front">[front]</span><span class="back">[back]</span></button>
+    </div>
+
+    <h2>Quiz</h2>
+    <div class="quiz">
+      <div class="quiz-q" data-answer="b" data-explain="[Why the answer is right.]">
+        <p>1. [Question]</p>
+        <button data-opt="a">[Option]</button>
+        <button data-opt="b">[Correct option]</button>
+        <button data-opt="c">[Option]</button>
+      </div>
+    </div>
+
+    <nav class="lesson-nav">
+      <a href="./">← All [Subject] lessons</a>
+    </nav>
+  </main>
+
+  <footer>Made with care at home.</footer>
+</body>
+</html>

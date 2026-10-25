@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Balancing Chemical Equations · Chemistry · Study Hub</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/mhchem.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body)"></script>
+  <script defer src="../assets/study.js"></script>
+</head>
+<body class="chemistry">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">📚 Study Hub</a>
+      <span class="crumbs">/ <a href="./">Chemistry</a></span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Balancing Chemical Equations</h1>
+    <p class="lead">After this lesson you can balance any basic chemical equation with a reliable step-by-step method.</p>
+
+    <h2>The idea</h2>
+    <p>
+      In a chemical reaction, atoms are never created or destroyed — they are only rearranged.
+      This is the <strong>law of conservation of mass</strong>. So every type of atom must appear
+      the same number of times on both sides of the arrow.
+    </p>
+    <p>An unbalanced equation for making water looks like this:</p>
+    $$ \ce{H2 + O2 -> H2O} $$
+    <p>
+      Count the oxygen: 2 atoms on the left, only 1 on the right. Something is missing.
+      We fix it by placing <strong>coefficients</strong> (big numbers in front of formulas):
+    </p>
+    $$ \ce{2H2 + O2 -> 2H2O} $$
+    <p>Now: hydrogen 4 = 4, oxygen 2 = 2. Balanced.</p>
+
+    <div class="box warn">
+      <p><strong>Golden rule:</strong> change only the <em>coefficients</em>, never the small
+      <em>subscripts</em>. Changing \( \ce{H2O} \) to \( \ce{H2O2} \) turns water into hydrogen
+      peroxide — a different substance!</p>
+    </div>
+
+    <h2>The method</h2>
+    <ol>
+      <li>Write the unbalanced equation with correct formulas.</li>
+      <li>Count the atoms of each element on both sides.</li>
+      <li>Balance elements that appear in only one compound on each side first (often metals or carbon).</li>
+      <li>Leave hydrogen and oxygen — and any element standing alone, like \( \ce{O2} \) — for last.</li>
+      <li>Recount everything. Use the smallest whole-number coefficients.</li>
+    </ol>
+
+    <div class="box tip">
+      <p><strong>Tip:</strong> If a polyatomic ion like \( \ce{SO4^2-} \) appears unchanged on both
+      sides, balance it as a single unit instead of atom by atom.</p>
+    </div>
+
+    <h2>Worked example: burning propane</h2>
+    $$ \ce{C3H8 + O2 -> CO2 + H2O} $$
+    <p><strong>Step 1 — carbon.</strong> 3 C on the left, so put 3 in front of \( \ce{CO2} \):</p>
+    $$ \ce{C3H8 + O2 -> 3CO2 + H2O} $$
+    <p><strong>Step 2 — hydrogen.</strong> 8 H on the left; each water has 2 H, so we need 4 waters:</p>
+    $$ \ce{C3H8 + O2 -> 3CO2 + 4H2O} $$
+    <p><strong>Step 3 — oxygen (last, because \( \ce{O2} \) stands alone).</strong>
+      Right side: \( 3 \times 2 + 4 \times 1 = 10 \) oxygen atoms. Each \( \ce{O2} \) gives 2, so we need 5:</p>
+    $$ \ce{C3H8 + 5O2 -> 3CO2 + 4H2O} $$
+    <p><strong>Step 4 — check.</strong></p>
+    <div class="table-scroll">
+      <table>
+        <tr><th>Element</th><th>Left</th><th>Right</th></tr>
+        <tr><td>C</td><td>3</td><td>3</td></tr>
+        <tr><td>H</td><td>8</td><td>4 × 2 = 8</td></tr>
+        <tr><td>O</td><td>5 × 2 = 10</td><td>3 × 2 + 4 = 10</td></tr>
+      </table>
+    </div>
+    <p>Balanced. ✅</p>
+
+    <h2>Practice</h2>
+    <p>Try each one on paper first, then open the solution.</p>
+    <details>
+      <summary>\( \ce{N2 + H2 -> NH3} \)</summary>
+      <p>$$ \ce{N2 + 3H2 -> 2NH3} $$
+      N: 2 = 2. H: 6 = 6. (Nitrogen first: 2 NH₃; then hydrogen: 6 H needs 3 H₂.)</p>
+    </details>
+    <details>
+      <summary>\( \ce{Fe + O2 -> Fe2O3} \)</summary>
+      <p>$$ \ce{4Fe + 3O2 -> 2Fe2O3} $$
+      Oxygen 2 on the left and 3 on the right: the lowest common multiple is 6, so 3 O₂ and 2 Fe₂O₃.
+      That gives 4 Fe on the right, so 4 Fe on the left.</p>
+    </details>
+    <details>
+      <summary>\( \ce{Al + HCl -> AlCl3 + H2} \)</summary>
+      <p>$$ \ce{2Al + 6HCl -> 2AlCl3 + 3H2} $$
+      Cl: 6 = 6. H: 6 = 6. Al: 2 = 2.</p>
+    </details>
+
+    <h2>Flashcards</h2>
+    <p>Tap a card to flip it.</p>
+    <div class="flashcards">
+      <button class="flashcard"><span class="front">Reactants</span><span class="back">Substances you start with (left of the arrow)</span></button>
+      <button class="flashcard"><span class="front">Products</span><span class="back">Substances formed (right of the arrow)</span></button>
+      <button class="flashcard"><span class="front">Coefficient</span><span class="back">Big number in front: how many molecules</span></button>
+      <button class="flashcard"><span class="front">Subscript</span><span class="back">Small number inside a formula: never change it</span></button>
+      <button class="flashcard"><span class="front">Conservation of mass</span><span class="back">Atoms are not created or destroyed in a reaction</span></button>
+      <button class="flashcard"><span class="front">Diatomic elements</span><span class="back">H₂, N₂, O₂, F₂, Cl₂, Br₂, I₂</span></button>
+    </div>
+
+    <h2>Quiz</h2>
+    <div class="quiz">
+      <div class="quiz-q" data-answer="b" data-explain="Atoms are only rearranged, so each element must be counted equally on both sides.">
+        <p>1. Why must chemical equations be balanced?</p>
+        <button data-opt="a">To make the equation look neater</button>
+        <button data-opt="b">Because of the law of conservation of mass</button>
+        <button data-opt="c">Because reactions always produce water</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="2 molecules × 2 H atoms each = 4 H atoms.">
+        <p>2. How many hydrogen atoms are in \( \ce{2H2O} \)?</p>
+        <button data-opt="a">2</button>
+        <button data-opt="b">3</button>
+        <button data-opt="c">4</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Changing a subscript changes the substance itself.">
+        <p>3. When balancing, what are you allowed to change?</p>
+        <button data-opt="a">Only the coefficients</button>
+        <button data-opt="b">Only the subscripts</button>
+        <button data-opt="c">Both coefficients and subscripts</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Na: 2 = 2, Cl: 2 = 2. The others have unequal oxygen counts.">
+        <p>4. Which equation is balanced?</p>
+        <button data-opt="a">\( \ce{H2 + O2 -> H2O} \)</button>
+        <button data-opt="b">\( \ce{2Na + Cl2 -> 2NaCl} \)</button>
+        <button data-opt="c">\( \ce{Mg + O2 -> MgO} \)</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Right side: 2 + 2 × 1 = 4 oxygen atoms, so 2 O₂ on the left.">
+        <p>5. Fill the blank: \( \ce{CH4} + \underline{\quad}\,\ce{O2 -> CO2 + 2H2O} \)</p>
+        <button data-opt="a">1</button>
+        <button data-opt="b">2</button>
+        <button data-opt="c">3</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="2 C₂H₆ gives 4 CO₂ and 6 H₂O. Oxygen on the right: 8 + 6 = 14, so 7 O₂.">
+        <p>6. Balance \( \ce{C2H6 + O2 -> CO2 + H2O} \) with whole numbers. What is the coefficient of \( \ce{O2} \)?</p>
+        <button data-opt="a">3</button>
+        <button data-opt="b">5</button>
+        <button data-opt="c">7</button>
+      </div>
+    </div>
+
+    <nav class="lesson-nav">
+      <a href="./">← All Chemistry lessons</a>
+    </nav>
+  </main>
+
+  <footer>Made with care at home.</footer>
+</body>
+</html>
