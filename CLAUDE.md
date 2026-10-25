@@ -30,7 +30,9 @@ Subjects so far: `spanish`, `math`, `chemistry`. A new subject needs: a folder w
 4. Formulas: KaTeX with `\( inline \)` and `$$ display $$`; chemistry with `\ce{...}` (mhchem).
    Remove the KaTeX lines from `<head>` if the lesson has no formulas.
    Do not use single `$` as a math delimiter.
-5. Spanish lessons: explain in English, examples in Spanish with English translations.
+5. Spanish lessons: explain in English, examples in Spanish with English translations. Mark Spanish text with
+   `lang="es"`; wrap example phrases in `<span class="say" lang="es">…</span>` to add a 🔊 listen button
+   (not inside buttons, flashcards or `<summary>`).
 6. Add the lesson to `<subject>/index.html` (at the end, numbered) and to the top of "Latest lessons" on `index.html`
    (remove the oldest if more than 5).
 7. Write clearly and encouragingly for a university student. Check facts and answers carefully — every quiz

@@ -178,6 +178,10 @@ summary { cursor: pointer; font-weight: 600; }
 .flashcard.flipped .front { display: none; }
 .flashcard.flipped .back { display: block; }
 
+/* Listen-aloud button */
+.say-btn { border: none; background: none; cursor: pointer; font-size: 0.85em; padding: 0 4px; vertical-align: baseline; }
+.say-btn:hover { transform: scale(1.15); }
+
 .lesson-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 15px; }
 
 footer { color: var(--muted); font-size: 14px; text-align: center; padding: 24px 0 40px; }

@@ -13,6 +13,9 @@
 //   <div class="flashcards">
 //     <button class="flashcard"><span class="front">hola</span><span class="back">hello</span></button>
 //   </div>
+//
+// Listen-aloud markup (adds a 🔊 button after the text; not inside buttons/flashcards):
+//   <span class="say" lang="es">¿Cómo estás?</span>
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".quiz").forEach(setupQuiz);
@@ -20,7 +23,28 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".flashcard").forEach((card) => {
     card.addEventListener("click", () => card.classList.toggle("flipped"));
   });
+
+  if ("speechSynthesis" in window) {
+    document.querySelectorAll(".say").forEach(setupSay);
+  }
 });
+
+function setupSay(el) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "say-btn";
+  btn.textContent = "🔊";
+  btn.title = "Listen";
+  btn.setAttribute("aria-label", "Listen: " + el.textContent);
+  btn.addEventListener("click", () => {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(el.textContent);
+    u.lang = el.lang === "es" ? "es-ES" : el.lang || "es-ES";
+    u.rate = 0.85;
+    speechSynthesis.speak(u);
+  });
+  el.after(btn);
+}
 
 function setupQuiz(quiz) {
   const questions = [...quiz.querySelectorAll(".quiz-q")];
