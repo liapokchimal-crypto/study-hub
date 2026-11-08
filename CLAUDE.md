@@ -39,9 +39,19 @@ Subjects so far: `spanish`, `math`, `chemistry`. A new subject needs: a folder w
    answer key must be correct.
 8. Must work on a phone: no wide fixed-width content; wrap wide tables in `<div class="table-scroll">`.
 
+## Exams from the student's textbook
+
+Exams based on textbook photos are split into short parts of 10 questions, one file per part
+(`<subject>/leccion-N-<part>-<topic>.html`), listed under their own heading on the subject page, with previous/next
+links between parts. Exams are written in Slovak, the textbook's language: `<html lang="sk">` (which also switches
+the quiz buttons and feedback in `assets/study.js`), with instructions, explanations and translations in Slovak and
+the tested language marked `lang="es"`. The site is public: write all questions, names and texts yourself and never copy the book's
+dialogues, passages or photos. Mix multiple-choice with typed answers (`data-accept`, see `assets/study.js`);
+a listening question uses `<span class="say" lang="es" hidden>`.
+
 ## Asset versions (cache busting)
 
-Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=2`). Browsers keep cached copies
+Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=3`). Browsers keep cached copies
 for ~10 minutes, so whenever `style.css` or `study.js` changes, bump `N` in **every** `.html` file (including
 `templates/lesson-template.html`) in the same commit. New lessons copy the current number from the template.
 

@@ -118,6 +118,7 @@ table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 16px;
 th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
 th { background: var(--surface); }
 .table-scroll { overflow-x: auto; }
+@media (max-width: 480px) { th, td { padding: 6px 7px; font-size: 15px; } details { padding: 10px 10px; } }
 
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
 @media (max-width: 480px) { .katex-display { font-size: 0.9em; } }
@@ -181,6 +182,23 @@ summary { cursor: pointer; font-weight: 600; }
 /* Listen-aloud button */
 .say-btn { border: none; background: none; cursor: pointer; font-size: 0.85em; padding: 0 4px; vertical-align: baseline; }
 .say-btn:hover { transform: scale(1.15); }
+.quiz-q .say-btn { display: inline-block; width: auto; background: none; border: none; padding: 0 4px; margin: 0; }
+.quiz-q .say-btn.listen { background: var(--accent-soft); border: 1px solid var(--accent); padding: 8px 16px; margin: 0 0 8px; font-size: 1em; }
+.quiz-q .say-btn.listen:hover { transform: none; }
+
+/* Typed answers */
+.quiz-answer { display: flex; gap: 8px; margin: 8px 0; }
+.quiz-input { flex: 1; min-width: 0; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
+.quiz-input.correct { background: var(--good-soft); border-color: var(--good); }
+.quiz-input.wrong { background: var(--bad-soft); border-color: var(--bad); }
+.quiz-q button.quiz-check { width: auto; margin: 0; flex: none; }
+
+/* Family tree diagram */
+.family-tree { display: block; width: 100%; max-width: 520px; margin: 16px auto; }
+.family-tree rect { fill: var(--surface); stroke: var(--border); }
+.family-tree rect.me { fill: var(--accent-soft); stroke: var(--accent); }
+.family-tree line { stroke: var(--muted); stroke-width: 1.5; }
+.family-tree text { fill: var(--text); font-size: 13px; text-anchor: middle; dominant-baseline: central; }
 
 .lesson-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 15px; }
 
