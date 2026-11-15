@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>El viaje: otázky</title>
+</head>
+<body>
+  <!-- Question data for the train game (assets/viaje.js). One .quiz block per leg, same markup as assets/study.js. -->
+    <svg class="family-tree" viewBox="0 0 360 212" role="img" aria-label="Rodokmeň. Manuel a Teresa sú manželia a majú dve dcéry, Isabel a Pilar. Isabel je vydatá za Antonia; ich deti sú Pablo, Carmen a Luis. Pilar je vydatá za Ramóna; ich deti sú Marta a Hugo.">
+      <line x1="170" y1="23" x2="190" y2="23"/>
+      <line x1="180" y1="23" x2="180" y2="56"/>
+      <line x1="125" y1="56" x2="235" y2="56"/>
+      <line x1="125" y1="56" x2="125" y2="76"/>
+      <line x1="235" y1="56" x2="235" y2="76"/>
+      <line x1="75" y1="92" x2="90" y2="92"/>
+      <line x1="270" y1="92" x2="285" y2="92"/>
+      <line x1="82.5" y1="92" x2="82.5" y2="130"/>
+      <line x1="277.5" y1="92" x2="277.5" y2="130"/>
+      <line x1="36" y1="130" x2="172" y2="130"/>
+      <line x1="245" y1="130" x2="313" y2="130"/>
+      <line x1="36" y1="130" x2="36" y2="148"/>
+      <line x1="104" y1="130" x2="104" y2="148"/>
+      <line x1="172" y1="130" x2="172" y2="148"/>
+      <line x1="245" y1="130" x2="245" y2="148"/>
+      <line x1="313" y1="130" x2="313" y2="148"/>
+      <rect x="100" y="7" width="70" height="32" rx="8"/><text x="135" y="23">Manuel</text>
+      <rect x="190" y="7" width="70" height="32" rx="8"/><text x="225" y="23">Teresa</text>
+      <rect x="5" y="76" width="70" height="32" rx="8"/><text x="40" y="92">Antonio</text>
+      <rect x="90" y="76" width="70" height="32" rx="8"/><text x="125" y="92">Isabel</text>
+      <rect x="200" y="76" width="70" height="32" rx="8"/><text x="235" y="92">Pilar</text>
+      <rect x="285" y="76" width="70" height="32" rx="8"/><text x="320" y="92">Ramón</text>
+      <rect class="me" x="5" y="148" width="62" height="32" rx="8"/><text x="36" y="164">Pablo</text>
+      <rect x="73" y="148" width="62" height="32" rx="8"/><text x="104" y="164">Carmen</text>
+      <rect x="141" y="148" width="62" height="32" rx="8"/><text x="172" y="164">Luis</text>
+      <rect x="214" y="148" width="62" height="32" rx="8"/><text x="245" y="164">Marta</text>
+      <rect x="282" y="148" width="62" height="32" rx="8"/><text x="313" y="164">Hugo</text>
+      <text x="36" y="196">(yo)</text>
+    </svg>
+    <div class="quiz" id="parte-1">
+      <div class="quiz-q" data-answer="b" data-explain="Majú tých istých rodičov, takže Luis je jej brat.">
+        <p>1. <span lang="es">Luis es el ___ de Carmen.</span></p>
+        <button data-opt="a" lang="es">primo</button>
+        <button data-opt="b" lang="es">hermano</button>
+        <button data-opt="c" lang="es">tío</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Teresa je matka Carmeninej matky.">
+        <p>2. <span lang="es">Teresa es la ___ de Carmen.</span></p>
+        <button data-opt="a" lang="es">madre</button>
+        <button data-opt="b" lang="es">tía</button>
+        <button data-opt="c" lang="es">abuela</button>
+      </div>
+      <div class="quiz-q" data-accept="tía" data-explain="Pilar je sestra Pablovej matky.">
+        <p>3. <span lang="es">Pilar es la ___ de Pablo.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="tío" data-explain="Ramón je manžel sestry Luisovej matky.">
+        <p>4. <span lang="es">Ramón es el ___ de Luis.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="prima" data-explain="Ich matky sú sestry, takže sú sesternice. Marta je žena: prima.">
+        <p>5. <span lang="es">Marta es la ___ de Carmen.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="marido|esposo" data-explain="Ramón a Pilar sú manželia.">
+        <p>6. <span lang="es">Ramón es el ___ de Pilar.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="nieta" data-explain="Carmen je dcéra Manuelovej dcéry.">
+        <p>7. <span lang="es">Carmen es la ___ de Manuel.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="sobrino" data-explain="Hugo je syn Isabelinej sestry, takže je jej synovec.">
+        <p>8. <span lang="es">Hugo es el ___ de Isabel.</span></p>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Los hijos zahŕňa syna aj dcéru spolu.">
+        <p>9. <span lang="es">Marta y Hugo son los ___ de Pilar y Ramón.</span></p>
+        <button data-opt="a" lang="es">hijos</button>
+        <button data-opt="b" lang="es">nietos</button>
+        <button data-opt="c" lang="es">sobrinos</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Manuel a Teresa sú rodičia Isabel a Pilar. Antonio sa do rodiny priženil.">
+        <p>10. <span lang="es">Verdadero o falso: Manuel y Teresa son los padres de Antonio.</span></p>
+        <button data-opt="a" lang="es">Verdadero</button>
+        <button data-opt="b" lang="es">Falso</button>
+      </div>
+    </div>
+    <div class="quiz" id="parte-2">
+      <div class="quiz-q" data-answer="a" data-explain="Vlastník yo, jedna matka: mi.">
+        <p>1. <span lang="es">(yo) ___ madre es profesora.</span></p>
+        <button data-opt="a" lang="es">Mi</button>
+        <button data-opt="b" lang="es">Mis</button>
+        <button data-opt="c" lang="es">Su</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Vlastník yo, viac starých rodičov: mis.">
+        <p>2. <span lang="es">(yo) ___ abuelos son muy simpáticos.</span></p>
+        <button data-opt="a" lang="es">Mi</button>
+        <button data-opt="b" lang="es">Mis</button>
+        <button data-opt="c" lang="es">Tus</button>
+      </div>
+      <div class="quiz-q" data-accept="tu" data-explain="Vlastník tú, jedna sestra: tu. Píše sa bez čiarky, na rozdiel od zámena tú.">
+        <p>3. <span lang="es">(tú) ¿Cómo se llama ___ hermana?</span></p>
+      </div>
+      <div class="quiz-q" data-accept="tus" data-explain="Vlastník tú, viac bratrancov: tus.">
+        <p>4. <span lang="es">(tú) ¿Dónde están ___ primos?</span></p>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Jeden vlastník, ale viac detí, preto množné číslo sus.">
+        <p>5. <span lang="es">(él) ___ hijos tienen diez años.</span></p>
+        <button data-opt="a" lang="es">Su</button>
+        <button data-opt="b" lang="es">Tu</button>
+        <button data-opt="c" lang="es">Sus</button>
+      </div>
+      <div class="quiz-q" data-accept="su" data-explain="Viac vlastníkov, ale iba jedna matka, preto jednotné číslo su.">
+        <p>6. <span lang="es">(ellos) ___ madre es muy joven.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="nuestra" data-explain="Abuela je ženského rodu v jednotnom čísle: nuestra.">
+        <p>7. <span lang="es">(nosotros) ___ abuela es baja.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="nuestros" data-explain="Tíos je mužského rodu v množnom čísle: nuestros.">
+        <p>8. <span lang="es">(nosotros) ___ tíos están divorciados.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="vuestras" data-explain="Hermanas je ženského rodu v množnom čísle: vuestras.">
+        <p>9. <span lang="es">(vosotros) ¿Son altas ___ hermanas?</span></p>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Viac bratov: sus hermanos, sloveso v množnom čísle son a prídavné meno v množnom čísle altos.">
+        <p>10. Ktorá veta znamená „Jej bratia sú vysokí“?</p>
+        <button data-opt="a" lang="es">Sus hermanos son altos.</button>
+        <button data-opt="b" lang="es">Su hermanos son altos.</button>
+        <button data-opt="c" lang="es">Sus hermanos es alto.</button>
+      </div>
+    </div>
+    <div class="quiz" id="parte-3">
+      <div class="quiz-q" data-accept="estoy" data-explain="Yo: estoy.">
+        <p>1. <span lang="es">Yo ___ soltero.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="estás" data-explain="Tú: estás, s čiarkou nad a.">
+        <p>2. <span lang="es">¿Tú ___ casada?</span></p>
+      </div>
+      <div class="quiz-q" data-accept="está" data-explain="Ella: está. Bez čiarky znamená esta „táto“.">
+        <p>3. <span lang="es">Mi tía ___ divorciada.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="estamos" data-explain="Nosotros: estamos.">
+        <p>4. <span lang="es">Nosotros ___ casados.</span></p>
+      </div>
+      <div class="quiz-q" data-accept="estáis" data-explain="Vosotros: estáis.">
+        <p>5. <span lang="es">¿Vosotros ___ solteros?</span></p>
+      </div>
+      <div class="quiz-q" data-accept="están" data-explain="Mis abuelos = ellos: están.">
+        <p>6. <span lang="es">Mis abuelos ___ casados.</span></p>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Viuda je žena, ktorej zomrel manžel.">
+        <p>7. Žena, ktorej zomrel manžel, povie: <span lang="es">„Estoy ___.“</span></p>
+        <button data-opt="a" lang="es">soltera</button>
+        <button data-opt="b" lang="es">divorciada</button>
+        <button data-opt="c" lang="es">viuda</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Novio sa používa so slovesom tener: tiene novio.">
+        <p>8. <span lang="es">Mi hermana ___ novio.</span></p>
+        <button data-opt="a" lang="es">está</button>
+        <button data-opt="b" lang="es">tiene</button>
+        <button data-opt="c" lang="es">es</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Dve ženy, takže ženský rod v množnom čísle: solteras.">
+        <p>9. <span lang="es">Eva y Marta están ___.</span></p>
+        <button data-opt="a" lang="es">solteras</button>
+        <button data-opt="b" lang="es">soltera</button>
+        <button data-opt="c" lang="es">solteros</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Nie je vydatá, ale priateľa má.">
+        <p>10. <span lang="es">„Ana no está casada, pero tiene novio.“</span> Čo vieme o Ane?</p>
+        <button data-opt="a">Je vydatá a má deti.</button>
+        <button data-opt="b">Nie je vydatá a má priateľa.</button>
+        <button data-opt="c">Rozviedla sa so svojím priateľom.</button>
+      </div>
+    </div>
+    <div class="quiz" id="parte-4">
+      <div class="quiz-q" data-answer="a" data-explain="Výška je opis, preto ser: es alto.">
+        <p>1. <span lang="es">Mi padre ___ alto.</span></p>
+        <button data-opt="a" lang="es">es</button>
+        <button data-opt="b" lang="es">tiene</button>
+        <button data-opt="c" lang="es">está</button>
+      </div>
+      <div class="quiz-q" data-accept="bajo" data-explain="Alto ≠ bajo.">
+        <p>2. Napíš opak: <span lang="es">alto ≠ ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="gordo" data-explain="Delgado ≠ gordo.">
+        <p>3. Napíš opak: <span lang="es">delgado ≠ ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="débil" data-explain="Fuerte ≠ débil, s čiarkou nad e.">
+        <p>4. Napíš opak: <span lang="es">fuerte ≠ ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="feo" data-explain="Guapo ≠ feo.">
+        <p>5. Napíš opak: <span lang="es">guapo ≠ ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="alta" data-explain="Madre je ženského rodu: alta.">
+        <p>6. Napíš prídavné meno v správnom tvare: <span lang="es">Mi madre es ___ (alto).</span></p>
+      </div>
+      <div class="quiz-q" data-accept="delgadas" data-explain="Hermanas je ženského rodu v množnom čísle: delgadas.">
+        <p>7. Napíš prídavné meno v správnom tvare: <span lang="es">Mis hermanas son ___ (delgado).</span></p>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Joven nekončí na -o, preto je rovnaké pre mužov aj ženy.">
+        <p>8. <span lang="es">Mi prima es ___.</span></p>
+        <button data-opt="a" lang="es">joven</button>
+        <button data-opt="b" lang="es">jovena</button>
+        <button data-opt="c" lang="es">jóvena</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Mayor je zdvorilé slovo pre staršieho človeka.">
+        <p>9. <span lang="es">Mi abuela tiene ochenta años. Es ___.</span></p>
+        <button data-opt="a" lang="es">joven</button>
+        <button data-opt="b" lang="es">alta</button>
+        <button data-opt="c" lang="es">mayor</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Atlética opisuje športovú ženu v dobrej kondícii.">
+        <p>10. Žena, ktorá veľa športuje a je v dobrej kondícii, je:</p>
+        <button data-opt="a" lang="es">elegante</button>
+        <button data-opt="b" lang="es">atlética</button>
+        <button data-opt="c" lang="es">débil</button>
+      </div>
+    </div>
+    <div class="quiz" id="parte-5">
+      <div class="quiz-q" data-answer="b" data-explain="Oči a vlasy sa opisujú so slovesom tener.">
+        <p>1. <span lang="es">Mi madre ___ los ojos verdes.</span></p>
+        <button data-opt="a" lang="es">es</button>
+        <button data-opt="b" lang="es">tiene</button>
+        <button data-opt="c" lang="es">está</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Pelo je mužského rodu v jednotnom čísle: el pelo.">
+        <p>2. <span lang="es">Mi hermano tiene ___ pelo corto.</span></p>
+        <button data-opt="a" lang="es">el</button>
+        <button data-opt="b" lang="es">los</button>
+        <button data-opt="c" lang="es">la</button>
+      </div>
+      <div class="quiz-q" data-accept="rizado" data-explain="Liso (rovné) ≠ rizado (kučeravé).">
+        <p>3. Napíš opak: <span lang="es">el pelo liso ≠ el pelo ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="largo" data-explain="Corto (krátke) ≠ largo (dlhé).">
+        <p>4. Napíš opak: <span lang="es">el pelo corto ≠ el pelo ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="azules" data-explain="Ojos je v množnom čísle: azul sa mení na azules.">
+        <p>5. Napíš prídavné meno v správnom tvare: <span lang="es">Tiene los ojos ___ (azul).</span></p>
+      </div>
+      <div class="quiz-q" data-accept="rubia" data-explain="Hermana je ženského rodu: rubia.">
+        <p>6. Napíš prídavné meno v správnom tvare: <span lang="es">Mi hermana es ___ (rubio).</span></p>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Pelirroja znamená ryšavá.">
+        <p>7. Žena s ryšavými vlasmi je:</p>
+        <button data-opt="a" lang="es">morena</button>
+        <button data-opt="b" lang="es">calva</button>
+        <button data-opt="c" lang="es">pelirroja</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Castaño opisuje hnedé, gaštanové vlasy.">
+        <p>8. <span lang="es">„Tiene el pelo castaño.“</span> Akú farbu majú vlasy?</p>
+        <button data-opt="a">Sivú</button>
+        <button data-opt="b">Hnedú</button>
+        <button data-opt="c">Bielu</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Bigote sú fúzy. Barba je brada.">
+        <p>9. Muž má ochlpenie iba nad hornou perou. Má:</p>
+        <button data-opt="a" lang="es">bigote</button>
+        <button data-opt="b" lang="es">barba</button>
+        <button data-opt="c" lang="es">el pelo rizado</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Calvo sa používa so slovesom ser, barba so slovesom tener a bez člena.">
+        <p>10. Ktorá veta znamená „Je plešatý a má bradu“?</p>
+        <button data-opt="a" lang="es">Tiene calvo y es barba.</button>
+        <button data-opt="b" lang="es">Es calvo y es barba.</button>
+        <button data-opt="c" lang="es">Es calvo y tiene barba.</button>
+      </div>
+    </div>
+    <div class="quiz" id="parte-6">
+      <div class="quiz-q" data-answer="b" data-explain="Gracioso znamená vtipný.">
+        <p>1. Niekto, kto ľudí stále rozosmieva, je:</p>
+        <button data-opt="a" lang="es">serio</button>
+        <button data-opt="b" lang="es">gracioso</button>
+        <button data-opt="c" lang="es">tímido</button>
+      </div>
+      <div class="quiz-q" data-accept="antipático" data-explain="Simpático ≠ antipático, s čiarkou nad druhým a.">
+        <p>2. Napíš opak: <span lang="es">simpático ≠ ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="extrovertido" data-explain="Tímido ≠ extrovertido.">
+        <p>3. Napíš opak: <span lang="es">tímido ≠ ___</span></p>
+      </div>
+      <div class="quiz-q" data-accept="pesimista" data-explain="Optimista ≠ pesimista. Obe slová končia na -a pre mužov aj ženy.">
+        <p>4. Napíš opak: <span lang="es">optimista ≠ ___</span></p>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Exigente znamená náročný.">
+        <p>5. Učiteľ, ktorý od študentov veľa vyžaduje, je:</p>
+        <button data-opt="a" lang="es">dulce</button>
+        <button data-opt="b" lang="es">amable</button>
+        <button data-opt="c" lang="es">exigente</button>
+      </div>
+      <div class="quiz-q" data-accept="graciosa" data-explain="Tía je ženského rodu: graciosa.">
+        <p>6. Napíš prídavné meno v správnom tvare: <span lang="es">Mi tía es ___ (gracioso).</span></p>
+      </div>
+      <div class="quiz-q" data-accept="impacientes" data-explain="Impaciente končí na -e, preto sa v množnom čísle pridáva iba -s.">
+        <p>7. Napíš prídavné meno v správnom tvare: <span lang="es">Mis hermanas son ___ (impaciente).</span></p>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Muy alto je z týchto troch možností najvyšší.">
+        <p>8. Kto je najvyšší?</p>
+        <button data-opt="a" lang="es">Pedro es muy alto.</button>
+        <button data-opt="b" lang="es">Juan no es muy alto.</button>
+        <button data-opt="c" lang="es">Luis es un poco bajo.</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Prvá veta je kladná, preto súhlasíš slovom también.">
+        <p>9. <span lang="es">— Tengo una hermana. — Yo ___.</span></p>
+        <button data-opt="a" lang="es">tampoco</button>
+        <button data-opt="b" lang="es">también</button>
+      </div>
+      <div class="quiz-q" data-accept="tampoco" data-explain="Prvá veta je záporná, preto súhlasíš slovom tampoco.">
+        <p>10. <span lang="es">— No tengo novia. — Yo ___.</span></p>
+      </div>
+    </div>
+    <div class="quiz" id="parte-7">
+      <div class="quiz-q" data-answer="b" data-explain="Na vek sa pýtame cuántos años. Años je mužského rodu v množnom čísle.">
+        <p>1. <span lang="es">¿___ años tiene tu madre?</span></p>
+        <button data-opt="a" lang="es">Cuál</button>
+        <button data-opt="b" lang="es">Cuántos</button>
+        <button data-opt="c" lang="es">Cuántas</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Hijas je ženského rodu v množnom čísle: cuántas.">
+        <p>2. <span lang="es">¿___ hijas tiene tu tío?</span></p>
+        <button data-opt="a" lang="es">Cuál</button>
+        <button data-opt="b" lang="es">Cuántos</button>
+        <button data-opt="c" lang="es">Cuántas</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Keď sa pýtame na jeden údaj, napríklad na priezvisko, použijeme cuál es.">
+        <p>3. <span lang="es">¿___ es tu apellido?</span></p>
+        <button data-opt="a" lang="es">Cuál</button>
+        <button data-opt="b" lang="es">Cuántos</button>
+        <button data-opt="c" lang="es">A qué</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Táto otázka sa pýta na jej prácu.">
+        <p>4. <span lang="es">¿A qué se dedica tu hermana?</span></p>
+        <button data-opt="a" lang="es">Tiene veinte años.</button>
+        <button data-opt="b" lang="es">Es enfermera.</button>
+        <button data-opt="c" lang="es">Está casada.</button>
+      </div>
+      <div class="quiz-q" data-answer="a" data-explain="Otázka ¿Cómo es? sa pýta na opis osoby.">
+        <p>5. <span lang="es">¿Cómo es tu novia?</span></p>
+        <button data-opt="a" lang="es">Es alta y simpática.</button>
+        <button data-opt="b" lang="es">Se llama Eva.</button>
+        <button data-opt="c" lang="es">Tiene dos hermanos.</button>
+      </div>
+      <div class="quiz-q" data-answer="c" data-explain="Rodinný stav sa vyjadruje slovesom estar: estoy casado.">
+        <p>6. <span lang="es">¿Cuál es tu estado civil?</span></p>
+        <button data-opt="a" lang="es">Soy oficinista.</button>
+        <button data-opt="b" lang="es">Tengo treinta años.</button>
+        <button data-opt="c" lang="es">Estoy casado.</button>
+      </div>
+      <div class="quiz-q" data-answer="b" data-explain="Abogado/a znamená právnik/právnička.">
+        <p>7. Človek, ktorý obhajuje ľudí na súde, je:</p>
+        <button data-opt="a" lang="es">dentista</button>
+        <button data-opt="b" lang="es">abogado</button>
+        <button data-opt="c" lang="es">oficinista</button>
+      </div>
+      <div class="quiz-q" data-accept="cincuenta y dos" data-explain="50 = cincuenta, potom y, potom dos.">
+        <p>8. Napíš číslo slovami: <span lang="es">Mi padre tiene ___ años (52).</span></p>
+      </div>
+      <div class="quiz-q" data-accept="setenta y seis" data-explain="70 = setenta, potom y, potom seis.">
+        <p>9. Napíš číslo slovami: <span lang="es">Mi abuela tiene ___ años (76).</span></p>
+      </div>
+      <div class="quiz-q" data-accept="treinta y un" data-explain="Pred podstatným menom años sa uno skracuje na un: treinta y un años.">
+        <p>10. Napíš číslo slovami: <span lang="es">Mi tía tiene ___ años (31).</span></p>
+      </div>
+    </div>
+</body>
+</html>

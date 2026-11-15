@@ -51,14 +51,24 @@ a listening question uses `<span class="say" lang="es" hidden>`.
 
 ## Games
 
-`spanish/viaje.html` is "El viaje", a train game across Spain (Slovak interface), built by `assets/viaje.js` and
-styled by `assets/viaje.css` (both linked with their own `?v=N`, currently `v=1`; bump it in `viaje.html` when
-either file changes). The game has no questions of its own: each leg in the `LEGS` list of `viaje.js` names one
-exam page, and the game fetches that page and reads its `.quiz-q` elements. So fixing a question in an exam part
-fixes it in the game too, and a new leg only needs a `LEGS` entry (cities, exam file, scenery theme, postcard
-fact) plus the city in `CITIES`. Questions with a hidden listening text are skipped. The last three
-multiple-choice questions of a leg form the timed "ticket inspector" round, so each exam part used by the game
-needs at least three multiple-choice questions. Stars per leg are stored in the browser's `localStorage` only.
+The Spanish section currently holds only games (the owner asked for the earlier lesson and exam pages to be
+removed; they remain in git history before the commit that added the detective game). Games have a Slovak
+interface, are written in plain JS with inline SVG drawings, must work at phone width, and keep stars per level
+in the browser's `localStorage` only. Each game's script and stylesheet carry their own `?v=N`; bump it in the
+pages that link the file whenever it changes.
+
+- **El viaje** (`spanish/viaje.html`, `assets/viaje.js?v=2`, `assets/viaje.css?v=1`): a train trip across Spain.
+  Its questions live in `spanish/viaje-preguntas.html`, a data-only page with one `<div class="quiz" id="parte-N">`
+  block per leg in the same `.quiz-q` markup as `assets/study.js` (plus the family tree used by leg 1). A new leg
+  needs a `LEGS` entry in `viaje.js` (cities, `part`, scenery theme, postcard fact), the city in `CITIES`, and a
+  `parte-N` block. The last three multiple-choice questions of a block form the timed "ticket inspector" round,
+  so each block needs at least three.
+- **El detective** (`spanish/detective.html`, `assets/detective.js?v=1`, `assets/detective.css?v=1`; also links
+  `viaje.css` for the shared buttons, cards and inputs): typed answers draw a suspect's portrait, then a timed
+  line-up of six. Cases are the `CASES` list in `detective.js`: the culprit's features, the questions (Slovak
+  witness line, Spanish sentence with `___`, accepted answers, which features the answer reveals) and `others`,
+  how each of the five innocent suspects differs. Every difference must be something the report states, so the
+  line-up has exactly one right answer.
 
 ## Asset versions (cache busting)
 

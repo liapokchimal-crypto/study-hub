@@ -1,0 +1,60 @@
+/* El detective — police-sketch game (spanish/detective.html). Buttons, cards and inputs come from viaje.css. */
+
+.vd-story { margin: 0 0 12px; }
+.vd-board { display: flex; gap: 12px; align-items: stretch; margin-bottom: 12px; }
+.vd-sketch {
+  flex: none; width: 150px; border-radius: var(--radius); border: 1px solid var(--border); background: #f4efe2; overflow: hidden;
+}
+.vd-sketch svg { display: block; width: 100%; height: auto; }
+.vd-notes { flex: 1; min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; font-size: 15px; }
+.vd-notes h3 { margin: 0 0 4px; font-size: 15px; }
+.vd-notes ul { margin: 0; padding-left: 18px; }
+.vd-notes li { margin: 2px 0; }
+.vd-notes .empty { color: var(--muted); list-style: none; margin-left: -18px; }
+
+.vd-witness { margin: 0 0 10px; padding: 10px 12px; border-radius: 10px; background: var(--accent-soft); }
+.vd-witness strong { display: block; font-size: 14px; color: var(--muted); }
+.vd-task { color: var(--muted); font-size: 14px; margin: 0 0 4px; }
+
+/* Figure */
+.vd-fig .wall { stroke: #d8cfb8; stroke-width: 1; }
+.vd-fig .wall-label { font-size: 6px; fill: #a59c85; }
+.vd-fig .vd-new { animation: vd-pop 0.7s ease-out; transform-box: fill-box; transform-origin: center; }
+.vd-fig .vd-smudge { filter: blur(1.6px); opacity: 0.55; }
+@keyframes vd-pop { from { opacity: 0; transform: scale(0.6); } 60% { transform: scale(1.08); } to { opacity: 1; transform: scale(1); } }
+
+/* Line-up */
+.vd-report { margin: 0 0 10px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); font-size: 1.05rem; }
+.vd-timer { height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; margin: 0 0 12px; }
+.vd-timer div { height: 100%; width: 100%; background: var(--spanish); transform-origin: left; animation: vd-drain var(--vd-time, 40s) linear forwards; }
+.vd-timer.stopped div { animation-play-state: paused; }
+@keyframes vd-drain { to { transform: scaleX(0); } }
+.vd-lineup { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.vd-suspect {
+  position: relative; padding: 0; border: 2px solid var(--border); border-radius: 10px; background: #f4efe2; cursor: pointer; overflow: hidden;
+  animation: vd-walk-in 0.5s ease-out backwards;
+}
+.vd-suspect svg { display: block; width: 100%; height: auto; }
+.vd-suspect .num { position: absolute; top: 3px; right: 7px; font: 700 14px system-ui, sans-serif; color: #6b6452; }
+.vd-suspect:hover:not(:disabled) { border-color: var(--accent); }
+.vd-suspect:disabled { cursor: default; }
+.vd-suspect.wrong { border-color: var(--bad); opacity: 0.45; }
+.vd-suspect.correct { border-color: var(--good); box-shadow: 0 0 0 3px var(--good-soft); }
+@keyframes vd-walk-in { from { opacity: 0; transform: translateX(-30px); } }
+
+/* Case solved */
+.vd-solved { display: flex; gap: 14px; align-items: center; }
+.vd-solved .vd-sketch { position: relative; width: 120px; }
+.vd-stamp {
+  position: absolute; left: 50%; top: 58%; transform: translate(-50%, -50%) rotate(-14deg); white-space: nowrap;
+  font: 800 13px system-ui, sans-serif; letter-spacing: 1px; color: #c62828; border: 2.5px solid #c62828; border-radius: 6px; padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.7); animation: vd-stamp 0.5s ease-in 0.3s backwards;
+}
+@keyframes vd-stamp { from { opacity: 0; transform: translate(-50%, -50%) rotate(-14deg) scale(2.4); } }
+
+@media (max-width: 420px) {
+  .vd-sketch { width: 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vd-fig .vd-new, .vd-suspect, .vd-stamp { animation: none; }
+}

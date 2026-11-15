@@ -1,6 +1,6 @@
 // El viaje — a train game across Spain (spanish/viaje.html).
 //
-// Each leg of the route takes its questions from one exam part: the game fetches that page and reads its
+// Each leg of the route takes its questions from one block (#parte-N) of spanish/viaje-preguntas.html: the game fetches that file and reads its
 // .quiz-q elements (same markup as assets/study.js), so the questions live in one place only.
 // A correct answer moves the train one step; a wrong one is asked again at the end of the leg.
 // Three multiple-choice questions per leg are timed: the ticket inspector round.
@@ -28,19 +28,19 @@
   };
 
   const LEGS = [
-    { from: "Bilbao", to: "Pamplona", file: "leccion-3-1-familia.html", topic: "La familia", theme: "north", icon: "🐂",
+    { from: "Bilbao", to: "Pamplona", part: 1, topic: "La familia", theme: "north", icon: "🐂",
       fact: "Každý rok od 6. do 14. júla sa tu konajú slávnosti San Fermín so známym behom býkov (encierro)." },
-    { from: "Pamplona", to: "Zaragoza", file: "leccion-3-2-posesivos.html", topic: "Los posesivos", theme: "dry", icon: "⛪",
+    { from: "Pamplona", to: "Zaragoza", part: 2, topic: "Los posesivos", theme: "dry", icon: "⛪",
       fact: "Mesto leží na rieke Ebro. Jeho symbolom je veľká bazilika Basílica del Pilar na brehu rieky." },
-    { from: "Zaragoza", to: "Barcelona", file: "leccion-3-3-estar.html", topic: "Estar y estado civil", theme: "palms", icon: "🏛️",
+    { from: "Zaragoza", to: "Barcelona", part: 3, topic: "Estar y estado civil", theme: "palms", icon: "🏛️",
       fact: "Chrám Sagrada Família od architekta Antoniho Gaudího sa začal stavať v roku 1882." },
-    { from: "Barcelona", to: "Valencia", file: "leccion-3-4-fisico.html", topic: "¿Cómo es?", theme: "coast", icon: "🥘",
+    { from: "Barcelona", to: "Valencia", part: 4, topic: "¿Cómo es?", theme: "coast", icon: "🥘",
       fact: "Odtiaľto pochádza paella. V marci sa tu oslavujú Las Fallas, sviatok ohňa a obrovských figurín." },
-    { from: "Valencia", to: "Madrid", file: "leccion-3-5-pelo-ojos.html", topic: "El pelo y los ojos", theme: "plateau", icon: "🏙️",
+    { from: "Valencia", to: "Madrid", part: 5, topic: "El pelo y los ojos", theme: "plateau", icon: "🏙️",
       fact: "Hlavné mesto Španielska. Na námestí Puerta del Sol je „kilometer nula“, od ktorého sa merajú hlavné španielske cesty." },
-    { from: "Madrid", to: "Córdoba", file: "leccion-3-6-caracter.html", topic: "El carácter", theme: "olive", icon: "🕌",
+    { from: "Madrid", to: "Córdoba", part: 6, topic: "El carácter", theme: "olive", icon: "🕌",
       fact: "Mezquita, bývalá mešita s červeno-bielymi oblúkmi, je dnes katedrálou." },
-    { from: "Córdoba", to: "Sevilla", file: "leccion-3-7-preguntas.html", topic: "Preguntas y datos", theme: "sunset", icon: "💃",
+    { from: "Córdoba", to: "Sevilla", part: 7, topic: "Preguntas y datos", theme: "sunset", icon: "💃",
       fact: "Hlavné mesto Andalúzie a kolíska flamenca. Veža Giralda bola pôvodne minaretom." },
   ];
 
@@ -135,7 +135,7 @@
       ${mapSVG(done)}
       ${done === LEGS.length ? `<p><strong>Cieľ cesty! Celá trasa z Bilbaa do Sevilly je za tebou.</strong> Každú etapu si môžeš zopakovať a zlepšiť si hviezdičky.</p>` : ""}
       <ul class="vj-legs">${legs}</ul>
-      <p class="vj-rules">Každá etapa má otázky z jednej časti testu z lekcie 3. Správna odpoveď posunie vlak, chybná ho zdrží a otázka sa na konci etapy vráti.
+      <p class="vj-rules">Každá etapa má desať otázok z jednej témy lekcie 3. Správna odpoveď posunie vlak, chybná ho zdrží a otázka sa na konci etapy vráti.
       Keď príde revízor 🎫, odpovedaj rýchlo: na každú otázku máš ${TIMED_SECONDS} sekúnd. Za etapu môžeš získať až tri hviezdičky.</p>
       ${progress.stars.some((n) => n > 0) ? `<div class="vj-actions"><button class="vj-btn" data-act="reset">Začať cestu odznova</button></div>` : ""}`;
   }
@@ -227,10 +227,10 @@
 
   async function loadLeg(leg) {
     if (leg.data) return leg.data;
-    const res = await fetch(leg.file);
+    const res = await fetch("viaje-preguntas.html");
     if (!res.ok) throw new Error("HTTP " + res.status);
     const doc = new DOMParser().parseFromString(await res.text(), "text/html");
-    const questions = [...doc.querySelectorAll(".quiz .quiz-q")]
+    const questions = [...doc.querySelectorAll(`#parte-${leg.part} .quiz-q`)]
       .filter((q) => !q.querySelector(".say[hidden]") && (q.dataset.accept || q.dataset.answer))
       .map((q) => {
         const p = q.querySelector("p").cloneNode(true);
@@ -244,7 +244,7 @@
         };
       });
     if (!questions.length) throw new Error("no questions");
-    const tree = doc.querySelector("svg.family-tree");
+    const tree = leg.part === 1 ? doc.querySelector("svg.family-tree") : null;
     leg.data = { questions, tree: tree ? tree.outerHTML : "" };
     return leg.data;
   }
