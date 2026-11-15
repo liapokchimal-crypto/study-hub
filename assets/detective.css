@@ -1,4 +1,4 @@
-/* El detective — police-sketch game (spanish/detective.html). Buttons, cards and inputs come from viaje.css. */
+/* El detective — police-sketch game (spanish/detective*.html). Buttons, cards and inputs come from viaje.css. */
 
 .vd-story { margin: 0 0 12px; }
 .vd-board { display: flex; gap: 12px; align-items: stretch; margin-bottom: 12px; }
@@ -58,3 +58,12 @@
 @media (prefers-reduced-motion: reduce) {
   .vd-fig .vd-new, .vd-suspect, .vd-stamp { animation: none; }
 }
+
+/* Scene kits (Lección 4 desk, Lección 5 room): the sketch is a landscape picture. */
+.vd-wide .vd-sketch { width: 50%; max-width: 280px; align-self: flex-start; }
+.vd-wide .vd-notes { font-size: 13.5px; line-height: 1.35; padding: 8px 10px; }
+.vd-wide .vd-notes ul { padding-left: 15px; }
+.vd-wide .vd-notes .empty { margin-left: -15px; }
+.vd-wide .vd-solved .vd-sketch { width: 150px; }
+.vd-wide .vd-lineup { grid-template-columns: repeat(2, 1fr); }
+.vd-wide .vd-suspect .num { top: auto; bottom: 3px; right: 5px; padding: 0 6px; border-radius: 9px; background: rgba(255, 255, 255, 0.85); }

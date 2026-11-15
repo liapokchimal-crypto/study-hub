@@ -100,6 +100,19 @@ function setupQuiz(quiz) {
 
     if (q.dataset.accept) setupTyped(q, feedback, record);
 
+    // Show the options in a random order on every visit, so the position of the right answer gives nothing away.
+    const opts = [...q.querySelectorAll("button[data-opt]")];
+    if (opts.length > 1) {
+      const mark = document.createComment("");
+      opts[0].before(mark);
+      for (let i = opts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [opts[i], opts[j]] = [opts[j], opts[i]];
+      }
+      opts.forEach((b) => mark.before(b));
+      mark.remove();
+    }
+
     q.querySelectorAll("button[data-opt]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const right = btn.dataset.opt === q.dataset.answer;

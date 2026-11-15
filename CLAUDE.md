@@ -64,16 +64,19 @@ pages that link the file whenever it changes.
   needs a `LEGS` entry in `viaje.js` (cities, `part`, scenery theme, postcard fact), the city in `CITIES`, and a
   `parte-N` block. The last three multiple-choice questions of a block form the timed "ticket inspector" round,
   so each block needs at least three.
-- **El detective** (`spanish/detective.html`, `assets/detective.js?v=1`, `assets/detective.css?v=1`; also links
-  `viaje.css` for the shared buttons, cards and inputs): typed answers draw a suspect's portrait, then a timed
-  line-up of six. Cases are the `CASES` list in `detective.js`: the culprit's features, the questions (Slovak
-  witness line, Spanish sentence with `___`, accepted answers, which features the answer reveals) and `others`,
-  how each of the five innocent suspects differs. Every difference must be something the report states, so the
-  line-up has exactly one right answer.
+- **El detective** (`assets/detective.js?v=2`, `assets/detective.css?v=2`; pages also link `viaje.css` for the shared
+  buttons, cards and inputs): typed answers draw a sketch, then a timed line-up of six. One kit per lesson in `KITS`,
+  picked with `<div id="detective" data-caso="leccion-N">`: `spanish/detective.html` (Lección 3, a person),
+  `detective-leccion-4.html` (a school desk, `desk()`), `detective-leccion-5.html` (a hideout room, `room()`). A kit has
+  its own `localStorage` key, Slovak texts, drawing function and case list (`PERSON_CASES`, `SCHOOL_CASES`,
+  `HOME_CASES`): the culprit's features, the questions (Slovak witness line, Spanish sentence with `___`, accepted
+  answers, optional `hint`, which features the answer reveals) and `others`, how each of the five wrong sketches
+  differs. Every difference must be something the report states, so the line-up has exactly one right answer. Keep the
+  questions different from the train game's questions for the same lesson.
 
 ## Asset versions (cache busting)
 
-Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=4`). Browsers keep cached copies
+Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=5`). Browsers keep cached copies
 for ~10 minutes, so whenever `style.css` or `study.js` changes, bump `N` in **every** `.html` file (including
 `templates/lesson-template.html`) in the same commit. New lessons copy the current number from the template.
 
@@ -112,6 +115,9 @@ route with `<div id="viaje" data-ruta="leccion-N">`: `spanish/viaje.html` (Lecci
 
 `slovak/` holds tests in Slovak (`<html lang="sk">`, `<body class="slovak">`) in the same 10-question parts as the exam format above.
 Put `data-input-lang="sk"` on the `.quiz` block so typed-answer fields are marked as Slovak.
+A topic can have a second set of questions ("Verzia B", files ending in `-b.html`) listed under its own `<h3>` on the subject
+page; the two versions link to each other. `assets/study.js` shows the answer buttons in a random order on every visit, so never
+write options that depend on their order ("both of the above").
 
 ## Source photos
 
