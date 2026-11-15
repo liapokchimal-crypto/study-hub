@@ -1,0 +1,112 @@
+/* El viaje — train game across Spain (used only by spanish/viaje.html) */
+
+.viaje { margin-top: 16px; }
+.vj-btn {
+  font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 16px; cursor: pointer;
+}
+.vj-btn:hover:not(:disabled) { border-color: var(--accent); }
+.vj-btn.primary { background: var(--spanish); border-color: var(--spanish); color: #fff; font-weight: 600; }
+@media (prefers-color-scheme: dark) { .vj-btn.primary { color: #15171a; } }
+.vj-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+/* Map */
+.vj-map { display: block; width: 100%; max-width: 560px; margin: 0 auto; border-radius: var(--radius); background: #cfe6f5; }
+.vj-map .land { fill: #f3e7c4; stroke: #c9b98a; stroke-width: 1; }
+.vj-map .neighbour { fill: #e4e0d2; stroke: #c9c4b2; stroke-width: 1; }
+.vj-map .track { stroke: #8a8172; stroke-width: 2.5; stroke-dasharray: 5 4; fill: none; }
+.vj-map .track.done { stroke: #d9480f; stroke-dasharray: none; stroke-width: 3; }
+.vj-map .city { fill: #fff; stroke: #5b5346; stroke-width: 1.5; }
+.vj-map .city.done { fill: #d9480f; stroke: #8f2f08; }
+.vj-map text { font-size: 11px; fill: #2b2a26; font-weight: 600; paint-order: stroke; stroke: #f3e7c4; stroke-width: 2.5px; }
+.vj-map .train { font-size: 18px; stroke: none; }
+@media (prefers-color-scheme: dark) { .vj-map { background: #274355; } }
+
+.vj-legs { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+.vj-leg {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; text-align: left;
+  font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border);
+  border-left: 4px solid var(--spanish); border-radius: 10px; padding: 12px 14px; cursor: pointer;
+}
+.vj-leg:hover:not(:disabled) { border-color: var(--spanish); }
+.vj-leg:disabled { opacity: 0.55; cursor: default; border-left-color: var(--border); }
+.vj-leg .meta { display: block; color: var(--muted); font-size: 14px; }
+.vj-stars { white-space: nowrap; font-size: 1.1rem; letter-spacing: 2px; color: #e0a100; }
+.vj-stars .off { color: var(--border); }
+.vj-rules { color: var(--muted); font-size: 15px; }
+
+/* Ride */
+.vj-scene { display: block; width: 100%; border-radius: var(--radius); overflow: hidden; background: #bfe3f7; }
+.vj-scene .vj-far, .vj-scene .vj-near { transition: transform 1.4s ease-in-out; }
+.vj-scene .vj-wheel, .vj-scene .vj-blades { transform-box: view-box; }
+.vj-scene.moving .vj-wheel { animation: vj-spin 0.45s linear infinite; }
+.vj-scene.moving .vj-train { animation: vj-bob 0.35s ease-in-out infinite; }
+.vj-scene .vj-blades { animation: vj-spin 6s linear infinite; }
+.vj-scene.delay .vj-train { animation: vj-shake 0.4s ease-in-out 1; }
+@keyframes vj-spin { to { transform: rotate(360deg); } }
+@keyframes vj-bob { 50% { transform: translateY(-0.6px); } }
+@keyframes vj-shake { 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
+
+.vj-progress { display: flex; align-items: center; gap: 10px; margin: 10px 0 4px; font-size: 14px; font-weight: 600; }
+.vj-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; }
+.vj-bar-fill { height: 100%; width: 0; background: var(--spanish); transition: width 1.4s ease-in-out; }
+.vj-count { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+
+.vj-tree { margin: 8px 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px 12px; }
+.vj-tree summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
+.vj-tree .family-tree { margin: 4px auto 8px; }
+
+.vj-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.vj-card > :first-child { margin-top: 0; }
+.vj-card > :last-child { margin-bottom: 0; }
+.vj-prompt { font-size: 1.1rem; margin: 0 0 12px; }
+.vj-retry { color: var(--muted); font-size: 14px; margin: 0 0 6px; }
+.vj-opt {
+  display: block; width: 100%; text-align: left; font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin: 8px 0; cursor: pointer;
+}
+.vj-opt:hover:not(:disabled) { border-color: var(--accent); }
+.vj-opt:disabled { cursor: default; }
+.vj-opt.correct { background: var(--good-soft); border-color: var(--good); }
+.vj-opt.wrong { background: var(--bad-soft); border-color: var(--bad); }
+.vj-form { display: flex; gap: 8px; }
+.vj-input {
+  flex: 1; min-width: 0; font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px;
+}
+.vj-input.correct { background: var(--good-soft); border-color: var(--good); }
+.vj-input.wrong { background: var(--bad-soft); border-color: var(--bad); }
+.vj-keys { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.vj-keys button {
+  font: inherit; min-width: 36px; padding: 4px 0; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--text); cursor: pointer;
+}
+.vj-feedback { margin: 12px 0 0; }
+.vj-feedback:empty { display: none; }
+.vj-feedback.good { color: var(--good); }
+.vj-feedback.bad { color: var(--bad); }
+
+/* Ticket inspector (timed round) */
+.vj-inspector { margin: 0 0 12px; padding: 10px 12px; border-radius: 10px; background: var(--accent-soft); border: 1px solid var(--accent); }
+.vj-inspector p { margin: 0 0 6px; font-weight: 600; font-size: 15px; }
+.vj-insp-track { position: relative; height: 30px; border-bottom: 3px solid var(--accent); }
+.vj-insp-walker { position: absolute; left: 0; bottom: 0; font-size: 22px; line-height: 1; animation: vj-walk var(--vj-time, 15s) linear forwards; }
+.vj-insp-seat { position: absolute; right: 0; bottom: 0; font-size: 22px; line-height: 1; }
+.vj-inspector.stopped .vj-insp-walker { animation-play-state: paused; }
+@keyframes vj-walk { to { left: calc(100% - 56px); } }
+
+/* Arrival */
+.vj-arrival h2 { margin: 0 0 4px; }
+.vj-arrival .vj-stars { font-size: 2rem; }
+.vj-postcard {
+  margin: 16px 0 0; padding: 14px 16px; border-radius: 10px; border: 2px dashed var(--spanish);
+  background: var(--bg); display: flex; gap: 14px; align-items: flex-start;
+}
+.vj-postcard .icon { font-size: 2.4rem; line-height: 1; }
+.vj-postcard strong { display: block; }
+.vj-postcard p { margin: 4px 0 0; font-size: 15px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vj-scene .vj-far, .vj-scene .vj-near, .vj-bar-fill { transition: none; }
+  .vj-scene.moving .vj-wheel, .vj-scene.moving .vj-train, .vj-scene .vj-blades, .vj-scene.delay .vj-train { animation: none; }
+}

@@ -49,6 +49,17 @@ the tested language marked `lang="es"`. The site is public: write all questions,
 dialogues, passages or photos. Mix multiple-choice with typed answers (`data-accept`, see `assets/study.js`);
 a listening question uses `<span class="say" lang="es" hidden>`.
 
+## Games
+
+`spanish/viaje.html` is "El viaje", a train game across Spain (Slovak interface), built by `assets/viaje.js` and
+styled by `assets/viaje.css` (both linked with their own `?v=N`, currently `v=1`; bump it in `viaje.html` when
+either file changes). The game has no questions of its own: each leg in the `LEGS` list of `viaje.js` names one
+exam page, and the game fetches that page and reads its `.quiz-q` elements. So fixing a question in an exam part
+fixes it in the game too, and a new leg only needs a `LEGS` entry (cities, exam file, scenery theme, postcard
+fact) plus the city in `CITIES`. Questions with a hidden listening text are skipped. The last three
+multiple-choice questions of a leg form the timed "ticket inspector" round, so each exam part used by the game
+needs at least three multiple-choice questions. Stars per leg are stored in the browser's `localStorage` only.
+
 ## Asset versions (cache busting)
 
 Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=3`). Browsers keep cached copies
