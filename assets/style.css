@@ -15,6 +15,7 @@
   --spanish: #d9480f;
   --math: #2f6fdb;
   --chemistry: #2b8a3e;
+  --slovak: #7048e8;
   --radius: 12px;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 14px rgba(0, 0, 0, 0.05);
 }
@@ -35,6 +36,7 @@
     --spanish: #ff8a4c;
     --math: #7aa7ff;
     --chemistry: #6fd18a;
+    --slovak: #b197fc;
     --shadow: none;
   }
 }
@@ -86,6 +88,7 @@ h3 { font-size: 1.1rem; margin: 28px 0 8px; }
 .spanish { --subject: var(--spanish); }
 .math { --subject: var(--math); }
 .chemistry { --subject: var(--chemistry); }
+.slovak { --subject: var(--slovak); }
 
 /* Lesson lists on subject pages */
 .lesson-list { list-style: none; padding: 0; margin: 24px 0 0; }

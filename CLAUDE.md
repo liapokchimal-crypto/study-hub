@@ -18,7 +18,8 @@ templates/lesson-template.html   copy this for every new lesson
 <subject>/<slug>.html      one lesson per file, slug in lowercase-with-dashes
 ```
 
-Subjects so far: `spanish`, `math`, `chemistry`. A new subject needs: a folder with `index.html`
+Subjects so far: `spanish`, `slovak`, `math`, `chemistry`. Subject pages group their items under one `<h2>` per textbook
+lesson or topic (Spanish: Lección 3, 4, 5; Slovak: Zvuková rovina jazyka). A new subject needs: a folder with `index.html`
 (copy an existing subject page), a card on the home page, and a `--<subject>` color + `.<subject>` class in `style.css`.
 
 ## Writing a lesson
@@ -57,7 +58,7 @@ interface, are written in plain JS with inline SVG drawings, must work at phone 
 in the browser's `localStorage` only. Each game's script and stylesheet carry their own `?v=N`; bump it in the
 pages that link the file whenever it changes.
 
-- **El viaje** (`spanish/viaje.html`, `assets/viaje.js?v=2`, `assets/viaje.css?v=1`): a train trip across Spain.
+- **El viaje** (`spanish/viaje.html`, `assets/viaje.js?v=3`, `assets/viaje.css?v=1`): a train trip across Spain.
   Its questions live in `spanish/viaje-preguntas.html`, a data-only page with one `<div class="quiz" id="parte-N">`
   block per leg in the same `.quiz-q` markup as `assets/study.js` (plus the family tree used by leg 1). A new leg
   needs a `LEGS` entry in `viaje.js` (cities, `part`, scenery theme, postcard fact), the city in `CITIES`, and a
@@ -72,7 +73,7 @@ pages that link the file whenever it changes.
 
 ## Asset versions (cache busting)
 
-Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=3`). Browsers keep cached copies
+Every page links `assets/style.css?v=N` and `assets/study.js?v=N` (currently `v=4`). Browsers keep cached copies
 for ~10 minutes, so whenever `style.css` or `study.js` changes, bump `N` in **every** `.html` file (including
 `templates/lesson-template.html`) in the same commit. New lessons copy the current number from the template.
 
@@ -98,3 +99,22 @@ git push
 
 The site updates about 1 minute after the push. Git and gh live in `C:\Program Files\Git\cmd` and
 `C:\Program Files\GitHub CLI` if they are not on PATH.
+
+## Train routes per lesson
+
+`assets/viaje.js` holds one route per Spanish lesson in `ROUTES` (legs, train colours, own `localStorage` key). A page picks its
+route with `<div id="viaje" data-ruta="leccion-N">`: `spanish/viaje.html` (Lección 3, the default), `spanish/viaje-leccion-4.html`
+(Santiago → Cádiz) and `spanish/viaje-leccion-5.html` (Girona → Málaga). Question blocks for these are `#parte-4-1` … `#parte-5-6` in
+`spanish/viaje-preguntas.html`. A new lesson needs a `ROUTES` entry, its cities in `CITIES`, the question blocks, a copy of
+`viaje-leccion-4.html` and an `<h2>` section on `spanish/index.html`. Vary the cities, scenery themes and train colours per route.
+
+## Slovak tests
+
+`slovak/` holds tests in Slovak (`<html lang="sk">`, `<body class="slovak">`) in the same 10-question parts as the exam format above.
+Put `data-input-lang="sk"` on the `.quiz` block so typed-answer fields are marked as Slovak.
+
+## Source photos
+
+The owner drops photos of textbook pages and school handouts into `_StudySources/<Subject>/<Lesson or topic>/`. The folder is in
+`.gitignore` and must never be published. Handouts can carry a handwritten name and marks: never repeat them. Write all questions and
+example sentences yourself; do not reuse the source dialogues, texts, poems or song lyrics.

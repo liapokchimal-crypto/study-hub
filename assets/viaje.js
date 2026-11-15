@@ -12,7 +12,6 @@
   const root = document.getElementById("viaje");
   if (!root) return;
 
-  const STORE = "viaje-leccion-3";
   const TIMED_SECONDS = 15;
   const TRAVEL = 600; // scene units the landscape scrolls during one leg
 
@@ -25,24 +24,73 @@
     Madrid: { at: [-3.7, 40.42], label: [-8, 4, "end"] },
     "Córdoba": { at: [-4.78, 37.88], label: [8, 4, "start"] },
     Sevilla: { at: [-5.98, 37.39], label: [-8, 5, "end"] },
+    Santiago: { at: [-8.54, 42.88], label: [8, 12, "start"] },
+    Oviedo: { at: [-5.85, 43.36], label: [8, 2, "start"] },
+    "León": { at: [-5.57, 42.6], label: [8, 5, "start"] },
+    Valladolid: { at: [-4.72, 41.65], label: [8, 4, "start"] },
+    Salamanca: { at: [-5.66, 40.97], label: [8, 5, "start"] },
+    "Cáceres": { at: [-6.37, 39.47], label: [8, 4, "start"] },
+    "Cádiz": { at: [-6.29, 36.53], label: [8, 6, "start"] },
+    Girona: { at: [2.82, 41.98], label: [-8, 1, "end"] },
+    Tarragona: { at: [1.25, 41.12], label: [-8, 4, "end"] },
+    Teruel: { at: [-1.11, 40.34], label: [-8, 4, "end"] },
+    Alicante: { at: [-0.48, 38.35], label: [-4, -8, "end"] },
+    Murcia: { at: [-1.13, 37.99], label: [-8, 6, "end"] },
+    Granada: { at: [-3.6, 37.18], label: [5, 14, "start"] },
+    "Málaga": { at: [-4.42, 36.72], label: [-8, 6, "end"] },
   };
 
-  const LEGS = [
-    { from: "Bilbao", to: "Pamplona", part: 1, topic: "La familia", theme: "north", icon: "🐂",
-      fact: "Každý rok od 6. do 14. júla sa tu konajú slávnosti San Fermín so známym behom býkov (encierro)." },
-    { from: "Pamplona", to: "Zaragoza", part: 2, topic: "Los posesivos", theme: "dry", icon: "⛪",
-      fact: "Mesto leží na rieke Ebro. Jeho symbolom je veľká bazilika Basílica del Pilar na brehu rieky." },
-    { from: "Zaragoza", to: "Barcelona", part: 3, topic: "Estar y estado civil", theme: "palms", icon: "🏛️",
-      fact: "Chrám Sagrada Família od architekta Antoniho Gaudího sa začal stavať v roku 1882." },
-    { from: "Barcelona", to: "Valencia", part: 4, topic: "¿Cómo es?", theme: "coast", icon: "🥘",
-      fact: "Odtiaľto pochádza paella. V marci sa tu oslavujú Las Fallas, sviatok ohňa a obrovských figurín." },
-    { from: "Valencia", to: "Madrid", part: 5, topic: "El pelo y los ojos", theme: "plateau", icon: "🏙️",
-      fact: "Hlavné mesto Španielska. Na námestí Puerta del Sol je „kilometer nula“, od ktorého sa merajú hlavné španielske cesty." },
-    { from: "Madrid", to: "Córdoba", part: 6, topic: "El carácter", theme: "olive", icon: "🕌",
-      fact: "Mezquita, bývalá mešita s červeno-bielymi oblúkmi, je dnes katedrálou." },
-    { from: "Córdoba", to: "Sevilla", part: 7, topic: "Preguntas y datos", theme: "sunset", icon: "💃",
-      fact: "Hlavné mesto Andalúzie a kolíska flamenca. Veža Giralda bola pôvodne minaretom." },
-  ];
+  // One route per lesson. The page picks it with <div id="viaje" data-ruta="…">; without it the Lección 3 route is used.
+  // "part" is the id suffix of the question block (#parte-…) in viaje-preguntas.html.
+  const ROUTES = {
+    "leccion-3": { store: "viaje-leccion-3", lesson: 3, whole: "z Bilbaa do Sevilly", train: "#c8102e", stripe: "#f1bf00", legs: [
+      { from: "Bilbao", to: "Pamplona", part: 1, topic: "La familia", theme: "north", icon: "🐂",
+        fact: "Každý rok od 6. do 14. júla sa tu konajú slávnosti San Fermín so známym behom býkov (encierro)." },
+      { from: "Pamplona", to: "Zaragoza", part: 2, topic: "Los posesivos", theme: "dry", icon: "⛪",
+        fact: "Mesto leží na rieke Ebro. Jeho symbolom je veľká bazilika Basílica del Pilar na brehu rieky." },
+      { from: "Zaragoza", to: "Barcelona", part: 3, topic: "Estar y estado civil", theme: "palms", icon: "🏛️",
+        fact: "Chrám Sagrada Família od architekta Antoniho Gaudího sa začal stavať v roku 1882." },
+      { from: "Barcelona", to: "Valencia", part: 4, topic: "¿Cómo es?", theme: "coast", icon: "🥘",
+        fact: "Odtiaľto pochádza paella. V marci sa tu oslavujú Las Fallas, sviatok ohňa a obrovských figurín." },
+      { from: "Valencia", to: "Madrid", part: 5, topic: "El pelo y los ojos", theme: "plateau", icon: "🏙️",
+        fact: "Hlavné mesto Španielska. Na námestí Puerta del Sol je „kilometer nula“, od ktorého sa merajú hlavné španielske cesty." },
+      { from: "Madrid", to: "Córdoba", part: 6, topic: "El carácter", theme: "olive", icon: "🕌",
+        fact: "Mezquita, bývalá mešita s červeno-bielymi oblúkmi, je dnes katedrálou." },
+      { from: "Córdoba", to: "Sevilla", part: 7, topic: "Preguntas y datos", theme: "sunset", icon: "💃",
+        fact: "Hlavné mesto Andalúzie a kolíska flamenca. Veža Giralda bola pôvodne minaretom." },
+    ] },
+    "leccion-4": { store: "viaje-leccion-4", lesson: 4, whole: "zo Santiaga do Cádizu", train: "#1f6f5c", stripe: "#f4f1ea", legs: [
+      { from: "Santiago", to: "Oviedo", part: "4-1", topic: "El material escolar", theme: "north", icon: "🍎",
+        fact: "Hlavné mesto Astúrie. Tento zelený kraj je známy jablčným muštom (sidra), ktorý sa nalieva z veľkej výšky." },
+      { from: "Oviedo", to: "León", part: "4-2", topic: "Hay, cuántos, muchos", theme: "plateau", icon: "⛪",
+        fact: "Gotická katedrála v Leóne má takmer 1 800 m² farebných vitráží. Mestom prechádza pútnická Svätojakubská cesta." },
+      { from: "León", to: "Valladolid", part: "4-3", topic: "Los colores", theme: "dry", icon: "📜",
+        fact: "V tomto meste istý čas žil Miguel de Cervantes, autor Dona Quijota. Jeho dom je dnes múzeom." },
+      { from: "Valladolid", to: "Salamanca", part: "4-4", topic: "El instituto", theme: "olive", icon: "🎓",
+        fact: "Univerzita v Salamance vznikla v roku 1218 a je najstaršou v Španielsku. Na jej priečelí študenti hľadajú malú kamennú žabu." },
+      { from: "Salamanca", to: "Cáceres", part: "4-5", topic: "Los verbos", theme: "pines2", icon: "🏰",
+        fact: "Staré mesto s hradbami a vežami je zapísané v zozname UNESCO. Na vežiach tu hniezdia bociany." },
+      { from: "Cáceres", to: "Cádiz", part: "4-6", topic: "Asignaturas y notas", theme: "sunset", icon: "⛵",
+        fact: "Jedno z najstarších miest západnej Európy, založili ho Feničania. Leží na polostrove a takmer zo všetkých strán ho obklopuje more." },
+    ] },
+    "leccion-5": { store: "viaje-leccion-5", lesson: 5, whole: "z Girony do Málagy", train: "#2456a6", stripe: "#f39a1e", legs: [
+      { from: "Girona", to: "Tarragona", part: "5-1", topic: "¿Dónde vives?", theme: "coast", icon: "🏛️",
+        fact: "Za Rimanov sa mesto volalo Tarraco. Pri mori tu dodnes stojí rímsky amfiteáter." },
+      { from: "Tarragona", to: "Teruel", part: "5-2", topic: "Las habitaciones", theme: "dry", icon: "🧱",
+        fact: "Mesto je známe tehlovými vežami v štýle mudéjar, v ktorom sa spája kresťanské a arabské umenie." },
+      { from: "Teruel", to: "Alicante", part: "5-3", topic: "Muebles y electrodomésticos", theme: "palms", icon: "🏖️",
+        fact: "Nad mestom a plážou stojí hrad Santa Bárbara. Pri prístave vedie promenáda s palmami a vlnitou mozaikou." },
+      { from: "Alicante", to: "Murcia", part: "5-4", topic: "¿Dónde está?", theme: "olive", icon: "🍋",
+        fact: "Okolie mesta sa volá „záhrada Európy“: pestujú sa tu citróny, pomaranče a zelenina." },
+      { from: "Murcia", to: "Granada", part: "5-5", topic: "Hay o está", theme: "north", icon: "🏯",
+        fact: "Palác Alhambra postavili maurskí vládcovia. Za mestom sa dvíha pohorie Sierra Nevada, kde sa dá lyžovať." },
+      { from: "Granada", to: "Málaga", part: "5-6", topic: "Ser, estar, hay", theme: "sunset", icon: "🎨",
+        fact: "V Málage sa v roku 1881 narodil maliar Pablo Picasso. Mesto leží na slnečnom pobreží Costa del Sol." },
+    ] },
+  };
+  const ROUTE = ROUTES[root.dataset.ruta] || ROUTES["leccion-3"];
+  const STORE = ROUTE.store;
+  const LEGS = ROUTE.legs;
 
   const THEMES = {
     north: { sky: ["#a9d8f5", "#e6f4fc"], far: "#7fb38a", ground: "#8cc474", front: "#79b562", item: "pine", hills: [22, 14, 28] },
@@ -51,6 +99,7 @@
     coast: { sky: ["#a9d8f5", "#e6f4fc"], sea: "#4aa3d8", ground: "#e9d9a6", front: "#dcc98f", item: "orange" },
     plateau: { sky: ["#b5dcf5", "#f6efd2"], far: "#d8c070", ground: "#e8d27a", front: "#dcc466", item: "mill", hills: [6, 10, 5] },
     olive: { sky: ["#b5dcf5", "#f3ecd9"], far: "#c9a66b", ground: "#d9bf7e", front: "#ccb06c", item: "olive", hills: [16, 10, 20] },
+    pines2: { sky: ["#b5dcf5", "#eef3dc"], far: "#a9b97a", ground: "#c9cf8a", front: "#b9c078", item: "pine", hills: [10, 18, 12] },
     sunset: { sky: ["#f7b27a", "#ffe3b8"], far: "#c98a5a", ground: "#d9b06a", front: "#c99f58", item: "orange", hills: [14, 8, 18], sun: "#ff8a3c" },
   };
 
@@ -133,9 +182,9 @@
     }).join("");
     root.innerHTML = `
       ${mapSVG(done)}
-      ${done === LEGS.length ? `<p><strong>Cieľ cesty! Celá trasa z Bilbaa do Sevilly je za tebou.</strong> Každú etapu si môžeš zopakovať a zlepšiť si hviezdičky.</p>` : ""}
+      ${done === LEGS.length ? `<p><strong>Cieľ cesty! Celá trasa ${ROUTE.whole} je za tebou.</strong> Každú etapu si môžeš zopakovať a zlepšiť si hviezdičky.</p>` : ""}
       <ul class="vj-legs">${legs}</ul>
-      <p class="vj-rules">Každá etapa má desať otázok z jednej témy lekcie 3. Správna odpoveď posunie vlak, chybná ho zdrží a otázka sa na konci etapy vráti.
+      <p class="vj-rules">Každá etapa má desať otázok z jednej témy lekcie ${ROUTE.lesson}. Správna odpoveď posunie vlak, chybná ho zdrží a otázka sa na konci etapy vráti.
       Keď príde revízor 🎫, odpovedaj rýchlo: na každú otázku máš ${TIMED_SECONDS} sekúnd. Za etapu môžeš získať až tri hviezdičky.</p>
       ${progress.stars.some((n) => n > 0) ? `<div class="vj-actions"><button class="vj-btn" data-act="reset">Začať cestu odznova</button></div>` : ""}`;
   }
@@ -185,7 +234,7 @@
     let windows = "";
     for (let i = 0; i < 4; i++) windows += `<rect x="${x + 5 + i * 11.5}" y="94" width="8" height="7" rx="1" fill="#7fb6d9"/>`;
     return `<rect x="${x}" y="90" width="52" height="22" rx="4" fill="#f4f1ea" stroke="#b9b3a5"/>${windows}
-      <rect x="${x}" y="104" width="52" height="3.5" fill="#c8102e"/><rect x="${x}" y="107.5" width="52" height="2" fill="#f1bf00"/>
+      <rect x="${x}" y="104" width="52" height="3.5" fill="${ROUTE.train}"/><rect x="${x}" y="107.5" width="52" height="2" fill="${ROUTE.stripe}"/>
       ${wheel(x + 11)}${wheel(x + 41)}<rect x="${x + 52}" y="106" width="6" height="3" fill="#555"/>`;
   }
 
@@ -214,10 +263,10 @@
       <line x1="0" y1="120.6" x2="360" y2="120.6" stroke="#77736b" stroke-width="1.6"/>
       <g class="vj-train">
         ${carriage(24)}${carriage(82)}
-        <path d="M140,112 L140,94 Q140,90 144,90 L176,90 Q192,92 198,108 L198,112Z" fill="#c8102e"/>
+        <path d="M140,112 L140,94 Q140,90 144,90 L176,90 Q192,92 198,108 L198,112Z" fill="${ROUTE.train}"/>
         <path d="M178,93 Q187,95 191,103 L179,103Z" fill="#7fb6d9"/>
         <rect x="146" y="94" width="12" height="7" rx="1" fill="#7fb6d9"/>
-        <rect x="140" y="106" width="57" height="2.5" fill="#f1bf00"/>
+        <rect x="140" y="106" width="57" height="2.5" fill="${ROUTE.stripe}"/>
         ${wheel(152)}${wheel(186)}
       </g>
     </svg>`;
@@ -427,7 +476,7 @@
       <h2>${last ? "Cieľ cesty" : "Príchod do stanice"}: ${esc(leg.to)}</h2>
       <p class="vj-stars" aria-label="Hviezdičky: ${stars} z 3">${starsHTML(stars)}</p>
       <p>${mistakes === 0 ? "Bez jedinej chyby, výborne!" : `Počet chýb: ${mistakes}.`}${stars < 3 ? " Tri hviezdičky získaš najviac s jednou chybou." : ""}
-      ${last ? " Celá trasa z Bilbaa do Sevilly je za tebou!" : ""}</p>
+      ${last ? ` Celá trasa ${ROUTE.whole} je za tebou!` : ""}</p>
       <div class="vj-postcard"><span class="icon" aria-hidden="true">${leg.icon}</span>
         <div><strong>Pohľadnica: ${esc(leg.to)}</strong><p>${esc(leg.fact)}</p></div></div>
       <div class="vj-actions">

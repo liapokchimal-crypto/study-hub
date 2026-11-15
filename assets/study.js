@@ -148,7 +148,8 @@ function setupTyped(q, feedback, record) {
   const input = document.createElement("input");
   input.type = "text";
   input.className = "quiz-input";
-  input.lang = "es";
+  const group = q.closest("[data-input-lang]");
+  input.lang = group ? group.dataset.inputLang : "es";
   input.autocomplete = "off";
   input.autocapitalize = "off";
   input.spellcheck = false;
